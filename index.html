@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duas Unique Services Limited - Engineering the Future, Building the Future</title>
+    
+    <!-- Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QRCode.js Library for dynamic QR Code generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dus: {
+                            main: 'var(--color-primary)',
+                            strong: 'var(--color-primary-strong)',
+                            soft: 'var(--color-primary-soft)',
+                            red: 'var(--color-accent)',
+                            yellow: 'var(--color-accent-gold)',
+                            text: 'var(--color-text)',
+                            bg: 'var(--color-bg)',
+                            surface: 'var(--color-surface)',
+                            border: 'var(--color-border)',
+                            card: 'var(--color-card-bg)',
+                            muted: 'var(--color-text-muted)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Primary colours */
+            --color-primary: #003963;
+            --color-primary-strong: #002542;
+            --color-primary-soft: #d5effe;
+
+            /* Secondary colour */
+            --color-accent: #de3837;
+            --color-accent-gold: #f1d907;
+
+            /* Light mode settings */
+            --color-text: #383838;
+            --color-bg: #f7faff;
+            --color-surface: #ffffff;
+            --color-border: #d2e4f0;
+            --color-shadow: rgba(0, 57, 99, 0.08);
+            --color-card-bg: #ffffff;
+            --color-text-muted: #64748b;
+            --logo-triangle-fill: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode remappings */
+            --color-primary: #38bdf8;
+            --color-primary-strong: #0284c7;
+            --color-primary-soft: #0f172a;
+
+            --color-accent: #f87171;
+            --color-accent-gold: #facc15;
+
+            --color-text: #f1f5f9;
+            --color-bg: #070d19;
+            --color-surface: #0f172a;
+            --color-border: #1e293b;
+            --color-shadow: rgba(0, 0, 0, 0.5);
+            --color-card-bg: #111e38;
+            --color-text-muted: #94a3b8;
+            --logo-triangle-fill: #0f172a;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .glass-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            box-shadow: 0 10px 30px -5px var(--color-shadow);
+        }
+
+        .gradient-bg-hero {
+            background: linear-gradient(135deg, var(--color-primary-strong) 0%, var(--color-primary) 50%, #001e36 100%);
+        }
+
+        /* Modal backdrop transition */
+        .modal-overlay {
+            backdrop-filter: blur(8px);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Custom Toast Notification */
+        #toast {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-sky-500 selection:text-white">
+
+    <!-- Top Contact Strip -->
+    <div class="bg-[var(--color-primary-strong)] text-white text-xs py-2 px-4 border-b border-sky-900/40">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-6">
+                <span><i class="fa-solid fa-building text-[var(--color-accent-gold)] mr-2"></i>RC: 1639974</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-calendar-check text-[var(--color-accent-gold)] mr-2"></i>Inc: Dec 9, 2019</span>
+                <span class="hidden sm:inline"><i class="fa-solid fa-location-dot text-[var(--color-accent-gold)] mr-2"></i>Mangal Plaza, Area 11, Garki, Abuja</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="tel:+2348069622685" class="hover:text-[var(--color-accent-gold)] transition-colors"><i class="fa-solid fa-phone mr-1"></i> +234 806 962 2685</a>
+                <a href="mailto:duasltd07@gmail.com" class="hover:text-[var(--color-accent-gold)] transition-colors hidden sm:inline"><i class="fa-solid fa-envelope mr-1"></i> duasltd07@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Main Header -->
+    <header class="sticky top-0 z-40 bg-[var(--color-surface)] border-b border-[var(--color-border)] shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 flex-shrink-0">
+                    <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="20,30 480,30 250,470" fill="none" stroke="var(--color-primary)" stroke-width="48" stroke-linejoin="round"/>
+                        <polygon points="70,55 430,55 250,405" fill="var(--logo-triangle-fill)"/>
+                        <ellipse cx="250" cy="210" rx="100" ry="110" fill="none" stroke="var(--color-primary)" stroke-width="4"/>
+                        <text x="250" y="235" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="140" fill="var(--color-primary)" text-anchor="middle">D</text>
+                        <polygon points="210,315 250,265 290,315 270,315 250,288 230,315" fill="var(--color-primary)"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="block text-lg font-extrabold tracking-tight text-[var(--color-primary)] uppercase leading-none group-hover:text-[var(--color-accent)] transition-colors">
+                        DUAS UNIQUE
+                    </span>
+                    <span class="block text-xs font-semibold tracking-widest text-[var(--color-text-muted)] uppercase mt-0.5">
+                        Services Limited
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
+                <a href="#home" class="hover:text-[var(--color-primary)] transition-colors">Home</a>
+                <a href="#about" class="hover:text-[var(--color-primary)] transition-colors">About Us</a>
+                <a href="#compliance" class="hover:text-[var(--color-primary)] transition-colors">Compliance</a>
+                <a href="#services" class="hover:text-[var(--color-primary)] transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-[var(--color-primary)] transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-[var(--color-primary)] transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions: Theme Toggle + QR Code CTA + Mobile Menu Button -->
+            <div class="flex items-center space-x-3">
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] hover:border-[var(--color-primary)] transition-all">
+                    <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
+                </button>
+
+                <button onclick="openModal('qrModal')" class="hidden sm:inline-flex items-center space-x-2 px-3.5 py-2 text-xs font-bold rounded-xl border border-[var(--color-border)] bg-[var(--color-primary-soft)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-all">
+                    <i class="fa-solid fa-qrcode text-sm"></i>
+                    <span>QR Card</span>
+                </button>
+
+                <button onclick="openModal('addProjectModal')" class="hidden xl:inline-flex items-center space-x-2 px-4 py-2 text-xs font-bold text-white bg-[var(--color-accent)] rounded-xl hover:opacity-90 shadow-sm transition-all">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add Project</span>
+                </button>
+
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)] transition-all">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-[var(--color-border)] bg-[var(--color-surface)] px-4 pt-3 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">About Us</a>
+            <a href="#compliance" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">Compliance</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">Services</a>
+            <a href="#portfolio" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">Portfolio (Jobs Done)</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold hover:text-[var(--color-primary)]">Contact Us</a>
+            <div class="pt-2 flex flex-wrap gap-2">
+                <button onclick="toggleMobileMenu(); openModal('qrModal')" class="w-full py-2.5 text-xs font-bold rounded-xl border border-[var(--color-border)] bg-[var(--color-primary-soft)] text-[var(--color-primary)] text-center">
+                    <i class="fa-solid fa-qrcode mr-2"></i> Download Digital QR Card
+                </button>
+                <button onclick="toggleMobileMenu(); openModal('addProjectModal')" class="w-full py-2.5 text-xs font-bold rounded-xl bg-[var(--color-accent)] text-white text-center">
+                    <i class="fa-solid fa-plus mr-2"></i> Add New Project Record
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="relative gradient-bg-hero text-white py-20 lg:py-28 overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-sky-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -top-20 w-96 h-96 rounded-full bg-red-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-sky-200 text-xs font-semibold backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-[var(--color-accent-gold)] animate-pulse"></span>
+                        <span>Multi-Disciplinary Engineering & Contracting Firm</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Engineering the Future, <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-200 via-amber-200 to-red-300">
+                            Building the Future.
+                        </span>
+                    </h1>
+
+                    <p class="text-slate-200 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                        Duas Unique Services Limited delivers premier Civil Engineering, Building Construction, Renewable Power, Telecommunications Infrastructure, and Strategic Procurement across Nigeria’s 6 Geo-Political Zones.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4 items-center">
+                        <a href="#services" class="px-6 py-3.5 rounded-xl bg-[var(--color-accent)] hover:bg-red-600 text-white font-bold text-sm shadow-lg shadow-red-900/30 transition-all flex items-center space-x-2">
+                            <span>Explore Range of Services</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#portfolio" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm backdrop-blur-md transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span>View Executed Projects</span>
+                        </a>
+                        <a href="#contact" class="px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-sm transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-headset"></i>
+                            <span>Consult Our Engineers</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="p-6 sm:p-8 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl relative">
+                        <div class="absolute -top-6 -right-6 bg-[var(--color-accent-gold)] text-slate-950 font-black p-4 rounded-2xl shadow-xl flex flex-col items-center justify-center text-center w-24 h-24 rotate-3">
+                            <i class="fa-solid fa-award text-2xl mb-1"></i>
+                            <span class="text-[10px] uppercase leading-tight">100% Quality Assurance</span>
+                        </div>
+
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-16 h-16 rounded-2xl bg-white p-2 flex items-center justify-center shadow-lg">
+                                <svg viewBox="0 0 500 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                    <polygon points="20,30 480,30 250,470" fill="none" stroke="#003963" stroke-width="48"/>
+                                    <polygon points="70,55 430,55 250,405" fill="#ffffff"/>
+                                    <ellipse cx="250" cy="210" rx="100" ry="110" fill="none" stroke="#003963" stroke-width="4"/>
+                                    <text x="250" y="235" font-family="'Arial Black', sans-serif" font-weight="900" font-size="140" fill="#003963" text-anchor="middle">D</text>
+                                    <polygon points="210,315 250,265 290,315 270,315 250,288 230,315" fill="#003963"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">DUAS UNIQUE</h3>
+                                <p class="text-xs text-slate-300">Services Limited | RC: 1639974</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 border-t border-white/10 pt-4">
+                            <div class="flex justify-between items-center text-xs text-slate-200">
+                                <span><i class="fa-solid fa-check-circle text-emerald-400 mr-2"></i>Board Oversight</span>
+                                <span class="font-semibold text-white">Main Board Director on Every Project</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs text-slate-200">
+                                <span><i class="fa-solid fa-check-circle text-emerald-400 mr-2"></i>Capacity Cap</span>
+                                <span class="font-semibold text-white">Max 10–12 Concurrent Projects</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs text-slate-200">
+                                <span><i class="fa-solid fa-check-circle text-emerald-400 mr-2"></i>Compliance</span>
+                                <span class="font-semibold text-white">CAC, NRS, PenCom, ITF, BPP Verified</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs text-slate-200">
+                                <span><i class="fa-solid fa-check-circle text-emerald-400 mr-2"></i>Headquarters</span>
+                                <span class="font-semibold text-white">Garki Area 11, Abuja, FCT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-white/10">
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <span class="block text-2xl sm:text-4xl font-extrabold text-[var(--color-accent-gold)]">100+</span>
+                    <span class="text-xs text-slate-300 font-medium">Projects Executed</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <span class="block text-2xl sm:text-4xl font-extrabold text-sky-300">6 Zones</span>
+                    <span class="text-xs text-slate-300 font-medium">Nationwide Coverage</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <span class="block text-2xl sm:text-4xl font-extrabold text-amber-300">10-12</span>
+                    <span class="text-xs text-slate-300 font-medium">Max Simultaneous Projects</span>
+                </div>
+                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <span class="block text-2xl sm:text-4xl font-extrabold text-emerald-400">100%</span>
+                    <span class="text-xs text-slate-300 font-medium">Regulatory Certified</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-accent)]">Company Overview</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-[var(--color-text)] mt-2">
+                    Driven by Precision, Focused on Client Success
+                </h2>
+                <div class="w-20 h-1 bg-[var(--color-accent)] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6 text-sm leading-relaxed text-[var(--color-text-muted)]">
+                    <p class="text-base text-[var(--color-text)] font-semibold">
+                        Duas Unique Services Limited was incorporated on the 9th day of December, 2019 (RC: 1639974) with a clear mandate to engineering excellence, high-precision construction, and sustainable infrastructure development.
+                    </p>
+                    <p>
+                        At Duas Unique Services Limited, we have built a sound portfolio of successfully completed projects across a comprehensive spectrum of sectors including <strong class="text-[var(--color-text)]">Residential, Educational, Refurbishment, Hospitality, Commercial, Industrial, Healthcare, and Pharmaceutical infrastructure</strong>.
+                    </p>
+                    <p>
+                        We have built our reputation on our client-focused and follow-up approach. We are proud of the fact that the majority of our workload comes from repeat business and that we have a strong reputation for our competitive edge and reliable execution of all projects undertaken.
+                    </p>
+                    <p>
+                        This is achieved through our relentless attention to detail and an experienced team with the drive and customer focus to ensure client satisfaction is a given on all Duas Unique Services Limited projects.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-6 grid sm:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl glass-card space-y-3 border-l-4 border-l-[var(--color-primary)]">
+                        <div class="w-10 h-10 rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[var(--color-text)]">Director Involvement</h3>
+                        <p class="text-xs text-[var(--color-text-muted)]">
+                            Main Board Director involvement is guaranteed on every project from start to finish as only 10–12 projects maximum are run at a time to ensure optimal quality control.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-3 border-l-4 border-l-[var(--color-accent)]">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-[var(--color-accent)] flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[var(--color-text)]">Our Corporate Aim</h3>
+                        <p class="text-xs text-[var(--color-text-muted)]">
+                            To be our clients’ first choice for engineering, construction, and related services. We anticipate client needs and deliver on every single commitment we make.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-3 border-l-4 border-l-[var(--color-accent-gold)]">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[var(--color-text)]">Modern Practices</h3>
+                        <p class="text-xs text-[var(--color-text-muted)]">
+                            We continually invest in modern business practices, project management software, and cutting-edge engineering techniques to stay ahead in the industry.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card space-y-3 border-l-4 border-l-emerald-500">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-[var(--color-text)]">Contracting Mastery</h3>
+                        <p class="text-xs text-[var(--color-text-muted)]">
+                            Rich expertise in mixed-use developments, traditional contracting, turn-key civil projects, and design-and-build commercial developments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regulatory Compliance & Affiliations Section -->
+    <section id="compliance" class="py-20 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-primary)]">Compliance & Credentials</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-[var(--color-text)] mt-2">
+                    Fully Certified & Registered Regulatory Status
+                </h2>
+                <p class="text-sm text-[var(--color-text-muted)] mt-3">
+                    Duas Unique Services Limited complies strictly with all Nigerian federal statutory regulatory bodies, labor standards, and procurement policies. Click any agency card below to view details.
+                </p>
+                <div class="w-20 h-1 bg-[var(--color-primary)] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 8 Regulatory Agencies Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="agencyGrid"></div>
+        </div>
+    </section>
+
+    <!-- Range of Services Section -->
+    <section id="services" class="py-20 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-accent)]">Comprehensive Solutions</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-[var(--color-text)] mt-2">
+                    Company Range of Services
+                </h2>
+                <p class="text-sm text-[var(--color-text-muted)] mt-3">
+                    Our versatile area of expertise spans across 13 core disciplines in Engineering, Procurement, Telecommunications, and Energy.
+                </p>
+                <div class="w-20 h-1 bg-[var(--color-accent)] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Jobs Done / Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-primary)]">Track Record</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-[var(--color-text)] mt-2">
+                        Jobs Done & Portfolio
+                    </h2>
+                    <p class="text-sm text-[var(--color-text-muted)] mt-2">
+                        Showcasing completed projects across Nigeria's 6 Geo-Political Zones.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <button onclick="openModal('addProjectModal')" class="px-5 py-2.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-strong)] text-white text-xs font-bold shadow-md transition-all flex items-center space-x-2">
+                        <i class="fa-solid fa-plus-circle"></i>
+                        <span>Add Project Record</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Zone Filters & Sector Filters -->
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8 p-4 rounded-2xl glass-card">
+                <div class="flex flex-wrap items-center gap-2" id="zoneFilterPills">
+                    <button onclick="filterProjects('ALL', this)" class="zone-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-primary)] text-white">All Zones</button>
+                    <button onclick="filterProjects('NC', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">North-Central (NC)</button>
+                    <button onclick="filterProjects('NW', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">North-West (NW)</button>
+                    <button onclick="filterProjects('NE', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">North-East (NE)</button>
+                    <button onclick="filterProjects('SW', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">South-West (SW)</button>
+                    <button onclick="filterProjects('SE', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">South-East (SE)</button>
+                    <button onclick="filterProjects('SS', this)" class="zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]">South-South (SS)</button>
+                </div>
+
+                <div class="w-full sm:w-auto">
+                    <select id="sectorFilter" onchange="filterProjectsBySector()" class="w-full sm:w-48 px-3 py-1.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs font-semibold focus:outline-none focus:border-[var(--color-primary)]">
+                        <option value="ALL">All Sectors</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Educational">Educational</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Infrastructure">Infrastructure & Energy</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Projects Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsContainer"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-[var(--color-bg)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[var(--color-accent)]">Get In Touch</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-[var(--color-text)] mt-2">
+                    Contact & Corporate Office
+                </h2>
+                <p class="text-sm text-[var(--color-text-muted)] mt-2">
+                    Reach out to our engineering team or visit our corporate office in Abuja.
+                </p>
+                <div class="w-20 h-1 bg-[var(--color-accent)] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="p-6 rounded-2xl glass-card flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] flex items-center justify-center font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-[var(--color-text)]">Head Office Address</h3>
+                            <p class="text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
+                                Suite 20, First Floor, Mangal Plaza, Area 11, Garki, FCT - Abuja, Nigeria.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-[var(--color-text)]">Telephone & Mobile</h3>
+                            <p class="text-xs text-[var(--color-text-muted)] mt-1">
+                                <a href="tel:+2348069622685" class="hover:text-[var(--color-primary)] font-semibold">+234 806 962 2685</a>
+                            </p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">Available Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-red-100 text-[var(--color-accent)] flex items-center justify-center font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-[var(--color-text)]">Email Address</h3>
+                            <p class="text-xs text-[var(--color-text-muted)] mt-1">
+                                <a href="mailto:duasltd07@gmail.com" class="hover:text-[var(--color-accent)] font-semibold">duasltd07@gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl glass-card flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-[var(--color-text)]">Corporate Registration</h3>
+                            <p class="text-xs text-[var(--color-text-muted)] mt-1">
+                                <strong>RC Number:</strong> 1639974<br>
+                                <strong>Incorporation Date:</strong> 9th December, 2019
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form with Autocomplete Enabled -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="p-8 rounded-3xl glass-card space-y-5" autocomplete="on">
+                        <h3 class="text-xl font-bold text-[var(--color-text)] border-b border-[var(--color-border)] pb-4">
+                            Send Us an Inquiry / Request Quotation
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="contactName" class="block text-xs font-bold text-[var(--color-text-muted)] mb-1">Full Name *</label>
+                                <input type="text" id="contactName" name="name" autocomplete="name" required placeholder="e.g. Engr. Ibrahim Ahmed" class="w-full px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs focus:outline-none focus:border-[var(--color-primary)]">
+                            </div>
+
+                            <div>
+                                <label for="contactEmail" class="block text-xs font-bold text-[var(--color-text-muted)] mb-1">Email Address *</label>
+                                <input type="email" id="contactEmail" name="email" autocomplete="email" required placeholder="name@company.com" class="w-full px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs focus:outline-none focus:border-[var(--color-primary)]">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="contactTel" class="block text-xs font-bold text-[var(--color-text-muted)] mb-1">Phone Number *</label>
+                                <input type="tel" id="contactTel" name="tel" autocomplete="tel" required placeholder="+234..." class="w-full px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs focus:outline-none focus:border-[var(--color-primary)]">
+                            </div>
+
+                            <div>
+                                <label for="contactService" class="block text-xs font-bold text-[var(--color-text-muted)] mb-1">Service Interest</label>
+                                <select id="contactService" name="service" class="w-full px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs focus:outline-none focus:border-[var(--color-primary)]">
+                                    <option value="Civil Engineering">Civil Engineering Work</option>
+                                    <option value="Building Structure">Building Structure & Development</option>
+                                    <option value="Road Construction">Road Construction & Rehabilitation</option>
+                                    <option value="Solar Infrastructure">Solar & Renewable Infrastructure</option>
+                                    <option value="ICT Telecommunication">ICT & Telecommunication</option>
+                                    <option value="Procurement">Procurement & General Supplies</option>
+                                    <option value="Consultancy">Consultancy & Partnerships</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contactMsg" class="block text-xs font-bold text-[var(--color-text-muted)] mb-1">Project Details / Message *</label>
+                            <textarea id="contactMsg" name="message" rows="4" required placeholder="Describe your project requirements, location, estimated timeline..." class="w-full px-4 py-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-xs focus:outline-none focus:border-[var(--color-primary)]"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-strong)] text-white text-xs font-bold shadow-lg transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Submit Inquiry</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#002542] text-white pt-16 pb-8 border-t border-sky-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-sky-900/60">
+                
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10">
+                            <svg viewBox="0 0 500 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                                <polygon points="20,30 480,30 250,470" fill="none" stroke="#38bdf8" stroke-width="48"/>
+                                <polygon points="70,55 430,55 250,405" fill="#002542"/>
+                                <ellipse cx="250" cy="210" rx="100" ry="110" fill="none" stroke="#38bdf8" stroke-width="4"/>
+                                <text x="250" y="235" font-family="'Arial Black', sans-serif" font-weight="900" font-size="140" fill="#38bdf8" text-anchor="middle">D</text>
+                                <polygon points="210,315 250,265 290,315 270,315 250,288 230,315" fill="#38bdf8"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-black tracking-wider text-sky-200">DUAS UNIQUE SERVICES LTD</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Engineering the Future, Building the Future. Registered under the Companies and Allied Matters Act, Nigeria (RC: 1639974).
+                    </p>
+                    <p class="text-xs text-amber-300 font-semibold">
+                        <i class="fa-solid fa-quote-left mr-1"></i> Quality execution through relentless attention to detail.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-sky-300">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home Page</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Corporate Structure</a></li>
+                        <li><a href="#compliance" class="hover:text-white transition-colors">Compliance & Agencies</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Engineering & Technical Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition-colors">Completed Jobs Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact Corporate Office</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-5 space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-sky-300">Head Office Location</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Suite 20, First Floor, Mangal Plaza, Area 11, Garki, Federal Capital Territory (FCT), Abuja, Nigeria.
+                    </p>
+                    <div class="pt-2 text-xs space-y-1 text-slate-300">
+                        <p><i class="fa-solid fa-phone text-sky-400 mr-2"></i> +234 806 962 2685</p>
+                        <p><i class="fa-solid fa-envelope text-sky-400 mr-2"></i> duasltd07@gmail.com</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+                <p>&copy; 2019 - 2026 Duas Unique Services Limited. All Rights Reserved. RC: 1639974.</p>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all flex items-center space-x-2">
+                    <span>Back to Top</span>
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Code Modal -->
+    <div id="qrModal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4">
+        <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-6 sm:p-8 max-w-sm w-full relative shadow-2xl space-y-6 text-center">
+            <button onclick="closeModal('qrModal')" class="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[var(--color-primary)]">Digital Contact Card</span>
+                <h3 class="text-lg font-bold text-[var(--color-text)] mt-1">Company QR Code</h3>
+                <p class="text-xs text-[var(--color-text-muted)]">Scan to instantly save contact & company info</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-inner flex justify-center items-center mx-auto w-56 h-56" id="qrcodeContainer"></div>
+
+            <div class="text-xs text-[var(--color-text-muted)] space-y-1">
+                <p class="font-bold text-[var(--color-text)]">Duas Unique Services Limited</p>
+                <p>RC: 1639974 | +234 806 962 2685</p>
+                <p>Mangal Plaza, Garki Area 11, Abuja</p>
+            </div>
+
+            <div class="flex gap-3">
+                <button onclick="downloadQRCode()" class="w-full py-2.5 rounded-xl bg-[var(--color-primary)] hover:bg-[var(--color-primary-strong)] text-white text-xs font-bold transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download PNG</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agency Details Modal -->
+    <div id="agencyModal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4">
+        <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl space-y-4">
+            <button onclick="closeModal('agencyModal')" class="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex items-center space-x-4">
+                <div id="agencyModalLogo" class="w-16 h-16 rounded-2xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] flex items-center justify-center text-2xl font-black"></div>
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-[var(--color-accent)]">Regulatory Body</span>
+                    <h3 id="agencyModalTitle" class="text-lg font-bold text-[var(--color-text)]">Agency Title</h3>
+                    <p id="agencyModalAcronym" class="text-xs font-semibold text-[var(--color-primary)]"></p>
+                </div>
+            </div>
+
+            <div class="border-t border-[var(--color-border)] pt-4 space-y-3 text-xs leading-relaxed text-[var(--color-text-muted)]">
+                <p id="agencyModalDescription">Description text goes here...</p>
+                <div class="p-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)]">
+                    <p class="font-bold text-[var(--color-text)] mb-1"><i class="fa-solid fa-shield-check text-emerald-500 mr-1.5"></i>Duas Unique Compliance Status:</p>
+                    <p id="agencyModalStatus" class="text-slate-600 dark:text-slate-300">Status description...</p>
+                </div>
+            </div>
+
+            <button onclick="closeModal('agencyModal')" class="w-full py-2.5 rounded-xl bg-[var(--color-primary)] text-white text-xs font-bold">
+                Close Regulatory File
+            </button>
+        </div>
+    </div>
+
+    <!-- Add/Edit Project Modal -->
+    <div id="addProjectModal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl space-y-4 my-8">
+            <button onclick="closeModal('addProjectModal')" class="absolute top-4 right-4 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[var(--color-accent)]">Portfolio Management</span>
+                <h3 id="projectModalHeading" class="text-lg font-bold text-[var(--color-text)]">Add New Executed Project</h3>
+            </div>
+
+            <form id="projectForm" onsubmit="handleProjectSubmit(event)" class="space-y-4 text-xs">
+                <input type="hidden" id="editProjectId" value="">
+
+                <div>
+                    <label for="projTitle" class="block font-bold text-[var(--color-text-muted)] mb-1">Project Title *</label>
+                    <input type="text" id="projTitle" required placeholder="e.g. Construction of 3-Story Commercial Complex" class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="projLocation" class="block font-bold text-[var(--color-text-muted)] mb-1">Location / State *</label>
+                        <input type="text" id="projLocation" required placeholder="e.g. Garki, Abuja" class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                    </div>
+                    <div>
+                        <label for="projZone" class="block font-bold text-[var(--color-text-muted)] mb-1">Geo-Political Zone *</label>
+                        <select id="projZone" required class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                            <option value="NC">North-Central (NC)</option>
+                            <option value="NW">North-West (NW)</option>
+                            <option value="NE">North-East (NE)</option>
+                            <option value="SW">South-West (SW)</option>
+                            <option value="SE">South-East (SE)</option>
+                            <option value="SS">South-South (SS)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="projSector" class="block font-bold text-[var(--color-text-muted)] mb-1">Sector *</label>
+                        <select id="projSector" required class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                            <option value="Commercial">Commercial</option>
+                            <option value="Residential">Residential</option>
+                            <option value="Educational">Educational</option>
+                            <option value="Hospitality">Hospitality</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Infrastructure">Infrastructure & Energy</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="projYear" class="block font-bold text-[var(--color-text-muted)] mb-1">Completion Year *</label>
+                        <input type="number" id="projYear" required min="2019" max="2026" value="2024" class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="projImage" class="block font-bold text-[var(--color-text-muted)] mb-1">Image URL (Optional)</label>
+                    <input type="url" id="projImage" placeholder="https://images.unsplash.com/photo-..." class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]">
+                    <p class="text-[10px] text-slate-400 mt-1">Leave blank for automatic high-quality construction image placeholder.</p>
+                </div>
+
+                <div>
+                    <label for="projDesc" class="block font-bold text-[var(--color-text-muted)] mb-1">Project Description *</label>
+                    <textarea id="projDesc" rows="3" required placeholder="Brief description of scope, structural specifications, or contract highlights..." class="w-full px-3 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)]"></textarea>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="button" onclick="closeModal('addProjectModal')" class="w-1/2 py-2.5 rounded-xl border border-[var(--color-border)] text-[var(--color-text)] font-semibold">
+                        Cancel
+                    </button>
+                    <button type="submit" class="w-1/2 py-2.5 rounded-xl bg-[var(--color-accent)] text-white font-bold shadow-md">
+                        Save Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Global Toast Notification UI -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="px-5 py-3.5 rounded-2xl bg-slate-900 text-white text-xs font-semibold shadow-2xl flex items-center space-x-3 border border-slate-700">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+            <span id="toastMessage">Action completed successfully.</span>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA OBJECTS ---
+        const AGENCYS_DATA = [
+            {
+                acronym: "CAC",
+                name: "Corporate Affairs Commission",
+                icon: "fa-building-columns",
+                desc: "The autonomous body charged with regulating the formation, incorporation, and management of companies in Nigeria.",
+                status: "Fully incorporated with RC Number 1639974 on December 9th, 2019. Active annual returns compliant."
+            },
+            {
+                acronym: "NRS / FIRS",
+                name: "Nigeria Revenue Service",
+                icon: "fa-file-invoice-dollar",
+                desc: "Federal tax regulatory authority ensuring tax compliance, value-added tax (VAT) remittances, and corporate taxation.",
+                status: "Assigned Tax Identification Number (TIN) with up-to-date Tax Clearance Certificates for all federal and state contracts."
+            },
+            {
+                acronym: "PenCom",
+                name: "National Pension Commission",
+                icon: "fa-shield-heart",
+                desc: "Regulates, supervises, and ensures the effective administration of pension matters for employees across Nigeria.",
+                status: "Certified compliant with statutory group pension schemes active for all permanent and contract workforce."
+            },
+            {
+                acronym: "NSITF",
+                name: "Nigeria Social Insurance Trust Fund",
+                icon: "fa-user-shield",
+                desc: "Provides compensation to employees or their dependents in event of death, injury, or occupational disease at work.",
+                status: "Registered under the Employees' Compensation Act (ECA) with verified workplace hazard safety coverage."
+            },
+            {
+                acronym: "ITF",
+                name: "Industrial Training Fund",
+                icon: "fa-graduation-cap",
+                desc: "Promotes and encourages the acquisition of skills in industry and commerce with a view to generating indigenous trained manpower.",
+                status: "Certified ITF training partner, funding vocational skill acquisition for indigenous engineering apprentices."
+            },
+            {
+                acronym: "BPP",
+                name: "Bureau of Public Procurement",
+                icon: "fa-scale-balanced",
+                desc: "Regulatory authority responsible for oversight of public procurement, ensuring transparency and equal opportunity.",
+                status: "Fully registered on the Federal Contractors, Consultants and Service Providers (CCSP) National Database."
+            },
+            {
+                acronym: "SCUML",
+                name: "Special Control Unit Against Money Laundering",
+                icon: "fa-lock",
+                desc: "Operated under the EFCC, monitoring designated non-financial businesses and professions to prevent money laundering.",
+                status: "Certified compliant with Anti-Money Laundering and Counter-Financing of Terrorism (AML/CFT) frameworks."
+            },
+            {
+                acronym: "NAA",
+                name: "Nigeria Association of Auctioneers",
+                icon: "fa-gavel",
+                desc: "National professional association governing commercial liquidation, asset evaluation, and procurement auctions.",
+                status: "Corporate member in good standing for asset disposition, machinery procurement, and valuation."
+            }
+        ];
+
+        const SERVICES_DATA = [
+            { id: 1, name: "Civil Engineering Work", icon: "fa-helmet-safety", desc: "Comprehensive structural design, foundation engineering, earthworks, and structural concrete execution for heavy infrastructure." },
+            { id: 2, name: "Building Structure & Development", icon: "fa-city", desc: "Turnkey multi-story commercial complexes, residential estates, structural steel frames, and modernized architectural erection." },
+            { id: 3, name: "Road Construction & Rehabilitation", icon: "fa-road", desc: "Asphalt paving, highway drainage networks, culverts, earthwork grading, and durable road surface rehabilitation." },
+            { id: 4, name: "ICT & Telecom Infrastructure", icon: "fa-tower-cell", desc: "Telecom mast erection, fiber optic cabling, server room deployment, high-speed data networking, and modern smart-building setups." },
+            { id: 5, name: "Electrical Installation & Maintenance", icon: "fa-bolt-lightning", desc: "High-voltage transformer installation, industrial wiring, power distribution panels, and commercial electrical maintenance." },
+            { id: 6, name: "Borehole Drilling & Water System", icon: "fa-faucet-drip", desc: "Deep aquifer industrial borehole drilling, water treatment plants, reticulation networks, and automated elevated tank systems." },
+            { id: 7, name: "Importation & Exportation", icon: "fa-ship", desc: "Global sourcing and clearing of heavy industrial construction equipment, specialized machinery, and engineering components." },
+            { id: 8, name: "Power & Energy Infrastructure", icon: "fa-plug-circle-bolt", desc: "Grid extension projects, power substation construction, industrial diesel generator installations, and energy auditing." },
+            { id: 9, name: "Solar Energy System & Installation", icon: "fa-solar-panel", desc: "Off-grid and hybrid commercial solar power plants, lithium storage systems, and solar street lighting for municipalities." },
+            { id: 10, name: "Agro & Agricultural Services", icon: "fa-wheat-awn", desc: "Agricultural processing facility construction, mechanized irrigation networks, greenhouse installations, and farm infrastructure." },
+            { id: 11, name: "Procurement & General Supplies", icon: "fa-truck-ramp-box", desc: "Strategic material sourcing, site equipment leasing, safety gear distribution, and federal institutional procurement contracts." },
+            { id: 12, name: "Consultancy Services & Partnership", icon: "fa-comments-dollar", desc: "Feasibility studies, structural integrity audits, project management advisory, and Joint Venture development partnerships." },
+            { id: 13, name: "General Contract & Services", icon: "fa-file-signature", desc: "Versatile corporate logistics, civil refurbishments, facility management, and multi-disciplinary turn-key contracting." }
+        ];
+
+        const INITIAL_PROJECTS = [
+            {
+                id: "proj-101",
+                title: "Mangal Plaza Modern Refurbishment",
+                location: "Garki Area 11, Abuja",
+                zone: "NC",
+                sector: "Commercial",
+                year: 2023,
+                desc: "Complete architectural facade upgrade, structural reinforcement, and modernized electrical reticulation for commercial plaza.",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: "proj-102",
+                title: "Hybrid Solar Power Substation",
+                location: "Kano Municipal, Kano",
+                zone: "NW",
+                sector: "Infrastructure",
+                year: 2024,
+                desc: "Design and deployment of a 150kW Off-Grid solar inverter plant with industrial battery storage for public facility.",
+                image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: "proj-103",
+                title: "Tertiary Education Faculty Block",
+                location: "Ibadan, Oyo State",
+                zone: "SW",
+                sector: "Educational",
+                year: 2022,
+                desc: "Turn-key civil structural erection of 3-story lecture theater, laboratory complex, and surrounding drainage works.",
+                image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: "proj-104",
+                title: "Regional Hospital Diagnostic Wing",
+                location: "Enugu, Enugu State",
+                zone: "SE",
+                sector: "Healthcare",
+                year: 2023,
+                desc: "Specialized healthcare civil construction with integrated backup power infrastructure and medical water purification installation.",
+                image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: "proj-105",
+                title: "Urban Access Road Rehabilitation",
+                location: "Port Harcourt, Rivers State",
+                zone: "SS",
+                sector: "Infrastructure",
+                year: 2024,
+                desc: "4.5km asphalt road rehabilitation including reinforced concrete box culverts and street lighting.",
+                image: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: "proj-106",
+                title: "Telecom Fiber & Mast Network Base",
+                location: "Maiduguri, Borno State",
+                zone: "NE",
+                sector: "Infrastructure",
+                year: 2023,
+                desc: "Civil foundation laying and telecommunication tower installation for remote connectivity expansion.",
+                image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // --- FUNCTIONS & EVENT HANDLERS ---
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('dus_theme', newTheme);
+            
+            const icon = document.getElementById('themeIcon');
+            if (newTheme === 'dark') {
+                icon.className = 'fa-solid fa-sun text-amber-400';
+            } else {
+                icon.className = 'fa-solid fa-moon text-slate-700';
+            }
+        }
+
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('dus_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            window.addEventListener('DOMContentLoaded', () => {
+                const icon = document.getElementById('themeIcon');
+                if (icon) {
+                    icon.className = savedTheme === 'dark' ? 'fa-solid fa-sun text-amber-400' : 'fa-solid fa-moon text-slate-700';
+                }
+            });
+        })();
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-lg';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-lg';
+            }
+        }
+
+        function showToast(message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toastMessage');
+            const iconEl = document.getElementById('toastIcon');
+
+            msgEl.textContent = message;
+            if (isSuccess) {
+                iconEl.className = 'fa-solid fa-circle-check text-emerald-400 text-base';
+            } else {
+                iconEl.className = 'fa-solid fa-circle-exclamation text-red-400 text-base';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            if (id === 'qrModal') {
+                setTimeout(generateQRCode, 100);
+            }
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Close modal when pressing ESC or clicking backdrop
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay').forEach(el => el.classList.add('hidden'));
+            }
+        });
+
+        function renderAgencies() {
+            const grid = document.getElementById('agencyGrid');
+            grid.innerHTML = AGENCYS_DATA.map((agency, idx) => `
+                <div onclick="openAgencyModal(${idx})" class="p-6 rounded-2xl glass-card hover:border-[var(--color-primary)] transition-all cursor-pointer group space-y-3 relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-[var(--color-primary-soft)] text-[var(--color-primary)] flex items-center justify-center font-black text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid ${agency.icon}"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-extrabold uppercase text-[var(--color-accent)] tracking-wider">${agency.acronym}</span>
+                        <h3 class="text-sm font-bold text-[var(--color-text)] leading-tight group-hover:text-[var(--color-primary)] transition-colors">${agency.name}</h3>
+                    </div>
+                    <p class="text-xs text-[var(--color-text-muted)] line-clamp-2">${agency.desc}</p>
+                    <div class="pt-2 flex items-center text-[11px] font-bold text-[var(--color-primary)]">
+                        <span>View Compliance Status</span>
+                        <i class="fa-solid fa-chevron-right text-[9px] ml-1.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openAgencyModal(idx) {
+            const agency = AGENCYS_DATA[idx];
+            document.getElementById('agencyModalTitle').textContent = agency.name;
+            document.getElementById('agencyModalAcronym').textContent = agency.acronym + ' Certified';
+            document.getElementById('agencyModalDescription').textContent = agency.desc;
+            document.getElementById('agencyModalStatus').textContent = agency.status;
+            document.getElementById('agencyModalLogo').innerHTML = `<i class="fa-solid ${agency.icon}"></i>`;
+            openModal('agencyModal');
+        }
+
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = SERVICES_DATA.map(srv => `
+                <div class="p-6 rounded-2xl glass-card hover:border-[var(--color-accent)] transition-all space-y-3 group">
+                    <div class="flex items-center justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-950/40 text-[var(--color-accent)] flex items-center justify-center text-xl font-bold group-hover:rotate-6 transition-transform">
+                            <i class="fa-solid ${srv.icon}"></i>
+                        </div>
+                        <span class="text-xs font-black text-[var(--color-text-muted)] opacity-40">0${srv.id}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-[var(--color-text)] leading-snug">${srv.name}</h3>
+                    <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">${srv.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function getProjects() {
+            const stored = localStorage.getItem('dus_projects');
+            if (stored) {
+                try { return JSON.parse(stored); } catch(e) { return INITIAL_PROJECTS; }
+            }
+            localStorage.setItem('dus_projects', JSON.stringify(INITIAL_PROJECTS));
+            return INITIAL_PROJECTS;
+        }
+
+        function saveProjects(projects) {
+            localStorage.setItem('dus_projects', JSON.stringify(projects));
+            renderPortfolio();
+        }
+
+        let currentZoneFilter = 'ALL';
+        let currentSectorFilter = 'ALL';
+
+        function filterProjects(zone, btnElement) {
+            currentZoneFilter = zone;
+            
+            if (btnElement) {
+                document.querySelectorAll('.zone-pill').forEach(btn => {
+                    btn.className = 'zone-pill px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-primary-soft)]';
+                });
+                btnElement.className = 'zone-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-[var(--color-primary)] text-white';
+            }
+
+            renderPortfolio();
+        }
+
+        function filterProjectsBySector() {
+            currentSectorFilter = document.getElementById('sectorFilter').value;
+            renderPortfolio();
+        }
+
+        function renderPortfolio() {
+            const container = document.getElementById('projectsContainer');
+            let projects = getProjects();
+
+            if (currentZoneFilter !== 'ALL') {
+                projects = projects.filter(p => p.zone === currentZoneFilter);
+            }
+
+            if (currentSectorFilter !== 'ALL') {
+                projects = projects.filter(p => p.sector === currentSectorFilter);
+            }
+
+            if (projects.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-[var(--color-text-muted)]">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3 text-slate-400"></i>
+                        <p class="text-sm font-semibold">No project records found for this filter criteria.</p>
+                        <button onclick="openModal('addProjectModal')" class="mt-4 px-4 py-2 rounded-xl bg-[var(--color-primary)] text-white text-xs font-bold">
+                            Add New Project to Portfolio
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = projects.map(p => `
+                <div class="rounded-2xl glass-card overflow-hidden group flex flex-col justify-between transition-all hover:shadow-xl border border-[var(--color-border)]">
+                    <div>
+                        <div class="h-48 w-full bg-slate-800 relative overflow-hidden">
+                            <img src="${p.image || 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80'}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x500/003963/ffffff?text=Duas+Unique+Project'">
+                            <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-amber-300 text-[10px] font-black uppercase">
+                                ${p.zone} Zone
+                            </div>
+                            <div class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-[var(--color-primary)] text-white text-[10px] font-bold">
+                                ${p.sector}
+                            </div>
+                        </div>
+
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between text-xs text-[var(--color-text-muted)]">
+                                <span><i class="fa-solid fa-location-dot text-[var(--color-accent)] mr-1"></i> ${p.location}</span>
+                                <span><i class="fa-solid fa-calendar mr-1"></i> ${p.year}</span>
+                            </div>
+
+                            <h3 class="text-base font-bold text-[var(--color-text)] leading-snug group-hover:text-[var(--color-primary)] transition-colors">
+                                ${p.title}
+                            </h3>
+
+                            <p class="text-xs text-[var(--color-text-muted)] leading-relaxed line-clamp-3">
+                                ${p.desc}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2 border-t border-[var(--color-border)] flex items-center justify-between text-xs">
+                        <span class="font-bold text-[var(--color-primary)] text-[11px]">RC: 1639974 Certified</span>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="editProject('${p.id}')" title="Edit Record" class="p-2 rounded-lg bg-[var(--color-bg)] hover:bg-[var(--color-primary-soft)] text-[var(--color-text)] transition-colors">
+                                <i class="fa-solid fa-pen-to-square text-sky-600"></i>
+                            </button>
+                            <button onclick="deleteProject('${p.id}')" title="Delete Record" class="p-2 rounded-lg bg-[var(--color-bg)] hover:bg-red-100 text-[var(--color-text)] transition-colors">
+                                <i class="fa-solid fa-trash-can text-red-500"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleProjectSubmit(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editProjectId').value;
+            const title = document.getElementById('projTitle').value.trim();
+            const location = document.getElementById('projLocation').value.trim();
+            const zone = document.getElementById('projZone').value;
+            const sector = document.getElementById('projSector').value;
+            const year = parseInt(document.getElementById('projYear').value);
+            const image = document.getElementById('projImage').value.trim();
+            const desc = document.getElementById('projDesc').value.trim();
+
+            let projects = getProjects();
+
+            if (editId) {
+                projects = projects.map(p => {
+                    if (p.id === editId) {
+                        return { ...p, title, location, zone, sector, year, image, desc };
+                    }
+                    return p;
+                });
+                showToast("Project record updated successfully!");
+            } else {
+                const newProj = {
+                    id: "proj-" + Date.now(),
+                    title,
+                    location,
+                    zone,
+                    sector,
+                    year,
+                    image,
+                    desc
+                };
+                projects.unshift(newProj);
+                showToast("New project added to portfolio!");
+            }
+
+            saveProjects(projects);
+            closeModal('addProjectModal');
+            document.getElementById('projectForm').reset();
+            document.getElementById('editProjectId').value = "";
+        }
+
+        function editProject(id) {
+            const projects = getProjects();
+            const proj = projects.find(p => p.id === id);
+            if (!proj) return;
+
+            document.getElementById('editProjectId').value = proj.id;
+            document.getElementById('projTitle').value = proj.title;
+            document.getElementById('projLocation').value = proj.location;
+            document.getElementById('projZone').value = proj.zone;
+            document.getElementById('projSector').value = proj.sector;
+            document.getElementById('projYear').value = proj.year;
+            document.getElementById('projImage').value = proj.image || '';
+            document.getElementById('projDesc').value = proj.desc;
+
+            document.getElementById('projectModalHeading').textContent = "Edit Completed Project Record";
+            openModal('addProjectModal');
+        }
+
+        function deleteProject(id) {
+            if (confirm("Are you sure you want to remove this project from the portfolio?")) {
+                let projects = getProjects();
+                projects = projects.filter(p => p.id !== id);
+                saveProjects(projects);
+                showToast("Project deleted from portfolio.", false);
+            }
+        }
+
+        let qrCodeInstance = null;
+        function generateQRCode() {
+            const container = document.getElementById('qrcodeContainer');
+            container.innerHTML = "";
+
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+N:Services Limited;Duas Unique;;;
+FN:Duas Unique Services Limited
+ORG:Duas Unique Services Limited (RC: 1639974)
+TITLE:Engineering, Building Construction & General Contracting
+TEL;TYPE=WORK,VOICE:+2348069622685
+EMAIL:duasltd07@gmail.com
+ADR;TYPE=WORK:;;Suite 20, First Floor, Mangal Plaza, Area 11, Garki;Abuja;FCT;Nigeria
+NOTE:Engineering the Future, Building the Future
+END:VCARD`;
+
+            qrCodeInstance = new QRCode(container, {
+                text: vCardData,
+                width: 200,
+                height: 200,
+                colorDark : "#003963",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        function downloadQRCode() {
+            const qrCanvas = document.querySelector('#qrcodeContainer canvas');
+            if (!qrCanvas) {
+                showToast("QR code generation pending...", false);
+                return;
+            }
+
+            const imageURI = qrCanvas.toDataURL("image/png");
+            const link = document.createElement("a");
+            link.download = "Duas_Unique_Services_Limited_QR.png";
+            link.href = imageURI;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("QR Code downloaded as PNG!");
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast("Inquiry submitted! Our engineering team will contact you shortly.");
+            e.target.reset();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderAgencies();
+            renderServices();
+            renderPortfolio();
+        });
+    </script>
+</body>
+</html>
